@@ -474,10 +474,7 @@
       <div class="label">Contact</div>
       <h2>Get in touch</h2>
       <p style="color:var(--muted);font-size:17px;margin:12px 0 36px;max-width:520px;">Questions about DrawBridge? We'll get back to you promptly.</p>
-      <form action="https://api.web3forms.com/submit" method="POST" style="max-width:520px;display:flex;flex-direction:column;gap:14px;">
-        <input type="hidden" name="access_key" value="5679973b-f592-42db-a0b1-ae118f55a817">
-        <input type="hidden" name="subject" value="DrawBridge Contact Form">
-        <input type="hidden" name="redirect" value="false">
+      <form id="contact-form" style="max-width:520px;display:flex;flex-direction:column;gap:14px;">
         <input type="text" name="name" placeholder="Your name" required
           style="background:#0f141a;color:var(--fg);border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:15px;font-family:inherit;outline:none;">
         <input type="email" name="email" placeholder="Your email" required
@@ -489,19 +486,24 @@
         <p id="form-result" style="font-size:14px;color:var(--muted);display:none;"></p>
       </form>
       <script>
-        const form = document.querySelector('#contact form');
+        const form = document.getElementById('contact-form');
         const result = document.getElementById('form-result');
         form.addEventListener('submit', async (e) => {
           e.preventDefault();
           result.style.display = 'block';
           result.textContent = 'Sending...';
-          const res = await fetch('https://api.web3forms.com/submit', { method:'POST', body: new FormData(form) });
-          const data = await res.json();
-          if (data.success) {
-            result.textContent = 'Message sent — thanks! We\'ll be in touch.';
-            result.style.color = '#00e676';
-            form.reset();
-          } else {
+          try {
+            const res = await fetch('https://drawbridge-contact.eianray.workers.dev', { method:'POST', body: new FormData(form) });
+            const data = await res.json();
+            if (data.success) {
+              result.textContent = 'Message sent — thanks! We\'ll be in touch.';
+              result.style.color = '#00e676';
+              form.reset();
+            } else {
+              result.textContent = 'Something went wrong. Please try again.';
+              result.style.color = '#f38ba8';
+            }
+          } catch {
             result.textContent = 'Something went wrong. Please try again.';
             result.style.color = '#f38ba8';
           }
