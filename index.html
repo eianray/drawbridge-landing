@@ -110,22 +110,15 @@
       align-items: center;
     }
     .cta-link { color: var(--muted); font-weight: 500; }
-    .video-placeholder {
+    .hero-screenshot {
       margin: 60px auto 0;
-      max-width: 860px;
-      background: var(--surface);
-      border: 2px dashed var(--border);
+      max-width: 900px;
+      display: block;
+      width: 100%;
       border-radius: 12px;
-      aspect-ratio: 16 / 9;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      text-align: center;
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.55);
     }
-    .video-placeholder .emoji { font-size: 48px; }
-    .video-placeholder .note { color: var(--muted); font-size: 16px; }
 
     /* Problem stats */
     .stats {
@@ -300,11 +293,8 @@
         <a class="btn orange" href="#pricing">Try Free — No card required</a>
         <a class="cta-link" href="#how-it-works">See how it works →</a>
       </div>
-      <div class="video-placeholder">
-        <!-- REPLACE THIS DIV WITH <video> OR <iframe> WHEN READY -->
-        <div class="emoji">📹</div>
-        <div class="note">Usage demo coming soon</div>
-      </div>
+      <!-- Swap this img for a <video> or <iframe> when the demo is ready -->
+      <img class="hero-screenshot" src="hero-screenshot.png" alt="DrawBridge app — digitize scanned construction drawings on a live map" />
     </div>
   </section>
 
