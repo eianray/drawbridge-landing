@@ -1,16 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <!-- Dark background -->
-  <rect width="32" height="32" rx="6" fill="#141b24"/>
-
-  <!-- Left tower (tall pylon) -->
-  <rect x="3" y="3" width="7" height="26" rx="2" fill="#f7931a"/>
-
-  <!-- Lifting span — angled up from hinge at tower base -->
-  <line x1="6.5" y1="22" x2="27" y2="7" stroke="#f7931a" stroke-width="4" stroke-linecap="round"/>
-
-  <!-- Road approach (right side, flat) -->
-  <line x1="18" y1="26" x2="30" y2="26" stroke="#f7931a" stroke-width="4" stroke-linecap="round"/>
-
-  <!-- Hinge pivot point -->
-  <circle cx="6.5" cy="22" r="3.5" fill="#141b24" stroke="#f7931a" stroke-width="2"/>
+  <!-- Orange background (gate frame / castle wall) -->
+  <rect width="32" height="32" fill="#f7931a"/>
+  <!-- Black trapezoid: looking out through the gate opening.
+       Long edge = full width at bottom, short edge = centered at midpoint -->
+  <polygon points="0,32 32,32 24,16 8,16" fill="#141b24"/>
 </svg>
