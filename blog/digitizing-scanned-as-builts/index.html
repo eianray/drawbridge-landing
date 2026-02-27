@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Digitize Scanned As-Built Drawings into GIS — DrawBridge</title>
+  <meta name="description" content="Step-by-step guide to converting scanned construction PDFs into GIS data for water, sewer, and utility districts. No ArcScan required." />
+  <link rel="canonical" href="https://drawbridgegis.com/blog/digitizing-scanned-as-builts/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="How to Digitize Scanned As-Built Drawings into GIS" />
+  <meta property="og:description" content="Step-by-step guide to converting scanned construction PDFs into GIS data for water, sewer, and utility districts." />
+  <meta property="og:url" content="https://drawbridgegis.com/blog/digitizing-scanned-as-builts/" />
+  <meta property="og:image" content="https://drawbridgegis.com/screenshots/step-9.00.40.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Digitize Scanned As-Built Drawings into GIS (Without ArcScan)",
+    "datePublished": "2026-02-27",
+    "author": { "@type": "Organization", "name": "DrawBridge LLC" },
+    "publisher": { "@type": "Organization", "name": "DrawBridge LLC", "url": "https://drawbridgegis.com" },
+    "description": "Step-by-step guide to converting scanned construction PDFs into GIS data for water, sewer, and utility districts."
+  }
+  </script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0; }
+    :root { --bg:#0f141a; --surface:#141b24; --border:#1e2a36; --fg:#e8e8e8; --muted:#8899aa; --accent:#f7931a; }
+    body { background:var(--bg); color:var(--fg); font-family:'Inter',sans-serif; line-height:1.7; }
+    a { color:var(--accent); }
+    nav { display:flex; align-items:center; justify-content:space-between; padding:20px 40px; border-bottom:1px solid var(--border); }
+    .brand { font-size:20px; font-weight:700; color:var(--fg); text-decoration:none; }
+    .brand span { color:var(--accent); }
+    .nav-cta { background:var(--accent); color:#141b24; font-weight:600; font-size:14px; padding:8px 18px; border-radius:8px; text-decoration:none; }
+    .container { max-width:720px; margin:0 auto; padding:60px 32px; }
+    .back { font-size:13px; color:var(--muted); margin-bottom:32px; display:block; }
+    .post-tag { font-size:11px; font-weight:600; color:var(--accent); letter-spacing:1px; text-transform:uppercase; margin-bottom:12px; }
+    h1 { font-size:36px; font-weight:700; line-height:1.2; margin-bottom:16px; }
+    .post-meta { font-size:13px; color:#445566; margin-bottom:40px; padding-bottom:32px; border-bottom:1px solid var(--border); }
+    h2 { font-size:22px; font-weight:700; margin:40px 0 14px; color:var(--fg); }
+    h3 { font-size:17px; font-weight:600; margin:28px 0 10px; color:var(--fg); }
+    p { margin-bottom:18px; color:#c8d0d8; font-size:16px; }
+    ul, ol { margin:0 0 18px 24px; color:#c8d0d8; font-size:16px; }
+    li { margin-bottom:8px; }
+    strong { color:var(--fg); }
+    .callout { background:var(--surface); border-left:3px solid var(--accent); padding:16px 20px; border-radius:0 8px 8px 0; margin:28px 0; }
+    .callout p { margin:0; font-size:15px; }
+    .cta-block { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:32px; margin:48px 0 0; text-align:center; }
+    .cta-block h3 { margin:0 0 8px; font-size:20px; }
+    .cta-block p { color:var(--muted); font-size:15px; margin:0 0 20px; }
+    .cta-btn { display:inline-block; background:var(--accent); color:#141b24; font-weight:700; font-size:15px; padding:12px 32px; border-radius:8px; text-decoration:none; }
+    footer { text-align:center; padding:40px 20px; border-top:1px solid var(--border); color:#445566; font-size:13px; margin-top:60px; }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="brand" href="/">Draw<span>Bridge</span></a>
+  <a class="nav-cta" href="https://app.drawbridgegis.com">Try Free</a>
+</nav>
+<div class="container">
+  <a class="back" href="/blog/">← Back to Blog</a>
+  <div class="post-tag">Tutorial</div>
+  <h1>How to Digitize Scanned As-Built Drawings into GIS (Without ArcScan)</h1>
+  <div class="post-meta">February 27, 2026 &nbsp;·&nbsp; 6 min read &nbsp;·&nbsp; DrawBridge Team</div>
+
+  <p>If you work in GIS for a water district, sewer utility, or municipal public works department, you know the problem well: filing cabinets — or shared drives — full of scanned construction drawings that exist only as PDFs. The features they show (water mains, laterals, valves, manholes) may be critical infrastructure, but they're invisible to your GIS system.</p>
+
+  <p>This is called the <strong>as-built digitizing backlog</strong>, and it plagues nearly every utility GIS department in the country. The drawings exist. The GIS doesn't know about them.</p>
+
+  <p>This guide walks through how to get those drawings into GIS — efficiently, without expensive software, and without learning ArcScan.</p>
+
+  <h2>Why ArcScan Usually Isn't the Answer</h2>
+
+  <p>ArcScan has been Esri's answer to scanned drawing digitizing for years. In theory, it automatically vectorizes raster lines. In practice, most GIS technicians have tried it, hit a wall, and gone back to manual digitizing.</p>
+
+  <p>The problems are predictable: construction drawings have legends, title blocks, hatching, and linework that bleeds together. ArcScan struggles to distinguish a water main from a property line. Cleaning up the output often takes longer than digitizing manually in the first place.</p>
+
+  <div class="callout"><p><strong>The honest answer:</strong> For utility as-builts, manual digitizing over a georeferenced image is almost always faster and more accurate than automated vectorization — if you have the right tools.</p></div>
+
+  <h2>The Standard Workflow (And Where It Breaks Down)</h2>
+
+  <p>The traditional approach looks like this:</p>
+  <ol>
+    <li>Export the PDF page as a raster (TIFF or PNG)</li>
+    <li>Import the raster into ArcGIS Pro</li>
+    <li>Georeference the raster against your basemap using control points</li>
+    <li>Create feature classes for each layer type</li>
+    <li>Manually digitize features on top of the georeferenced image</li>
+    <li>Set attributes, save, done</li>
+  </ol>
+
+  <p>This works. But it's slow. Georeferencing alone — finding matching control points, rubber-sheeting, saving the reference — can take 20–30 minutes per page for an unfamiliar drawing. Multi-page plan sets multiply that linearly.</p>
+
+  <p>For districts with hundreds of undigitized drawings, this math doesn't work.</p>
+
+  <h2>A Faster Approach: Browser-Based Digitizing</h2>
+
+  <p>DrawBridge was built to compress this workflow. Instead of a five-step process that requires ArcGIS Pro and careful georeferencing setup, the flow is:</p>
+
+  <ol>
+    <li><strong>Upload</strong> your PDF — multi-page plan sets work fine</li>
+    <li><strong>Place</strong> pages directly onto a live map (satellite, street, or topo basemap)</li>
+    <li><strong>Create layers</strong> — Water Main, Laterals, Valves, Manholes, whatever your schema needs</li>
+    <li><strong>Digitize</strong> — click to trace lines, place points, draw polygons with vertex snapping</li>
+    <li><strong>Export</strong> to GDB, Shapefile, GeoJSON, or KML</li>
+  </ol>
+
+  <p>The exported GDB opens directly in ArcGIS Pro. No intermediate raster formats, no georeferencing wizard, no cleanup step.</p>
+
+  <h2>Tips for Faster Digitizing</h2>
+
+  <h3>Use separate layers for each feature type</h3>
+  <p>Create a layer for each distinct feature class — don't mix water mains and service laterals in the same layer. This matches how your GIS schema is likely organized and makes attribute assignment much cleaner.</p>
+
+  <h3>Start with the largest features</h3>
+  <p>Digitize mains before laterals, laterals before services. The large features give you reference geometry that makes small features easier to place accurately.</p>
+
+  <h3>Use the satellite basemap for alignment</h3>
+  <p>When placing a drawing page on the map, switch to satellite view. Parcels, driveways, building footprints, and street edges give you reliable visual anchors for alignment that street maps don't provide.</p>
+
+  <h3>Batch similar drawings together</h3>
+  <p>If you have 50 drawings from the same subdivision, process them in one session. Your layer structure stays loaded, your muscle memory kicks in, and you'll move through them much faster than switching between sessions.</p>
+
+  <h3>Don't over-digitize</h3>
+  <p>For lines, you don't need a vertex at every curve inflection point. Capture the meaningful vertices — start, end, significant bends — and let your GIS smooth the geometry. Over-digitizing creates bloated datasets that are hard to edit later.</p>
+
+  <h2>What About Georeferencing?</h2>
+
+  <p>DrawBridge uses a visual alignment approach — you drag and rotate the drawing page over the map until it aligns with the real-world geography. Features are then digitized in world coordinates relative to that placement.</p>
+
+  <p>For most utility as-built work, this is sufficient. The goal is to capture the topology (what connects to what) and approximate real-world position — not sub-centimeter survey accuracy. If you need survey-grade precision, a traditional georeferencing workflow with professional control points is the right tool.</p>
+
+  <h2>Getting Started</h2>
+
+  <p>DrawBridge is free to try with 5 pages, no card required. For larger jobs, credit packs start at $10 for 15 pages.</p>
+
+  <div class="cta-block">
+    <h3>Try DrawBridge Free</h3>
+    <p>5 pages, no card required. Upload a scanned PDF and export your first GDB in minutes.</p>
+    <a class="cta-btn" href="https://app.drawbridgegis.com">Start Digitizing →</a>
+  </div>
+</div>
+<footer>© 2026 DrawBridge LLC &nbsp;·&nbsp; <a href="/">drawbridgegis.com</a> &nbsp;·&nbsp; <a href="/blog/">Blog</a></footer>
+</body>
+</html>
