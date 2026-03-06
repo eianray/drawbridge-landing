@@ -36,7 +36,7 @@
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD",
-      "description": "Free to use — pay $1/page only when you export. No registration required."
+      "description": "Free tier: 5 pages, no card required"
     },
     "description": "DrawBridge converts scanned construction PDFs into GIS data. Upload, digitize, and export to GDB, Shapefile, GeoJSON, or KML.",
     "screenshot": "https://drawbridgegis.com/screenshots/step-9.00.40.png",
@@ -112,7 +112,7 @@
       margin: 0 auto;
     }
     .brand { font-weight: 700; color: var(--white); font-size: 18px; }
-    .brand .bridge { color: #f7931a; }
+    .brand span { color: var(--orange); }
     .nav-actions { display: flex; align-items: center; gap: 16px; }
     .ghost { color: var(--muted); font-weight: 500; }
 
@@ -148,28 +148,8 @@
       max-width: 600px;
       margin-top: 20px;
     }
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 28px;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 7px 14px;
-      border: 1.5px solid var(--border);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--fg);
-      letter-spacing: 0.01em;
-    }
-    .hero-badge .badge-icon { font-size: 15px; }
     .cta-row {
-      margin-top: 32px;
+      margin-top: 40px;
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
@@ -440,11 +420,10 @@
 <body>
   <nav class="nav">
     <div class="nav-inner">
-      <div class="brand">Draw<span class="bridge">Bridge</span></div>
+      <div class="brand">Draw<span>Bridge</span></div>
       <div class="nav-actions">
         <a class="ghost" href="/blog/">Blog</a>
-        <a class="ghost" href="https://app.drawbridgegis.com">Sign In</a>
-        <a class="btn orange" href="https://app.drawbridgegis.com">Try Free — No Card Required</a>
+        <a class="btn orange" href="https://app.drawbridgegis.com">Open App →</a>
       </div>
     </div>
   </nav>
@@ -453,14 +432,10 @@
     <div class="container">
       <div class="label">A Utility for Utilities.</div>
       <h1>Turn scanned drawings into GIS data — in minutes.</h1>
-      <p class="sub">DrawBridge converts construction PDFs into Esri File Geodatabases. Upload, align, digitize, export.</p>
-      <div class="hero-badges">
-        <span class="hero-badge"><span class="badge-icon">🚫</span> No GIS software licenses</span>
-        <span class="hero-badge"><span class="badge-icon">👶</span> Beginner-friendly</span>
-        <span class="hero-badge"><span class="badge-icon">⚡</span> Results in minutes</span>
-      </div>
+      <p class="sub">DrawBridge converts construction PDFs into Esri File Geodatabases. Upload, align, digitize, export. No AutoCAD. No manual data entry.</p>
+      <p class="sub" style="font-size:15px; opacity:0.85; margin-top:8px;">No GIS software licenses required. Designed for entry-level beginners — quick turnaround, no commitment.</p>
       <div class="cta-row">
-        <a class="btn orange" href="https://app.drawbridgegis.com">Try Free — No Card Required</a>
+        <a class="btn orange" href="https://app.drawbridgegis.com">Start Digitizing →</a>
         <a class="cta-link" href="#how-it-works">See how it works →</a>
       </div>
       <!-- Embedded demo player -->
@@ -571,46 +546,17 @@
   <section id="pricing" class="section alt">
     <div class="container">
       <div class="label">Pricing</div>
-      <h2>Simple, prepaid credits.</h2>
-      <p style="margin-top:8px; color: var(--muted);">No subscription. No expiration. Buy what you need.</p>
-      <p style="margin-top:6px; color: var(--muted);">1 credit = 1 PDF page processed. Credits never expire.</p>
-      <div class="pricing-grid">
-        <div class="price-card">
-          <div class="badge-tag">Start here</div>
-          <div class="plan">Free to Try</div>
-          <div class="pages">Pay at Export</div>
-          <div class="price">$0</div>
-          <div class="meta">Free to use · $1/page at export · No registration required</div>
-          <a class="btn ghost" href="https://app.drawbridgegis.com">Get Started — Free</a>
-        </div>
-        <div class="price-card">
-          <div class="plan">Starter</div>
-          <div class="pages">15 pages</div>
-          <div class="price">$10</div>
-          <div class="meta">$0.67 / page</div>
-          <a class="btn ghost" href="https://app.drawbridgegis.com">Buy Credits</a>
-        </div>
-        <div class="price-card">
-          <div class="plan">Standard</div>
-          <div class="pages">40 pages</div>
-          <div class="price">$25</div>
-          <div class="meta">$0.63 / page</div>
-          <a class="btn ghost" href="https://app.drawbridgegis.com">Buy Credits</a>
-        </div>
+      <h2>Pay per export. No subscription.</h2>
+      <p style="margin-top:8px; color: var(--muted);">$1 per page. Pay at export time. No account required.</p>
+      <p style="margin-top:6px; color: var(--muted);">Enter your email, pay by card, get a permanent download link.</p>
+      <div class="pricing-grid" style="max-width:360px; margin:32px auto 0;">
         <div class="price-card pro">
-          <div class="badge-tag">Most popular</div>
-          <div class="plan">Pro</div>
-          <div class="pages">150 pages</div>
-          <div class="price">$75</div>
-          <div class="meta">$0.50 / page</div>
-          <a class="btn orange" href="https://app.drawbridgegis.com">Buy Credits</a>
-        </div>
-        <div class="price-card">
-          <div class="plan">Studio</div>
-          <div class="pages">400 pages</div>
-          <div class="price">$150</div>
-          <div class="meta">$0.38 / page</div>
-          <a class="btn ghost" href="https://app.drawbridgegis.com">Buy Credits</a>
+          <div class="badge-tag">Simple</div>
+          <div class="plan">Pay As You Go</div>
+          <div class="pages">No account · No subscription</div>
+          <div class="price">$1<span style="font-size:18px; font-weight:400;">/page</span></div>
+          <div class="meta">Email → Stripe → permanent download link</div>
+          <a class="btn orange" href="https://app.drawbridgegis.com">Start Digitizing →</a>
         </div>
       </div>
     </div>
@@ -623,11 +569,11 @@
       <div style="margin-top: 16px;">
         <details>
           <summary>What counts as one page?</summary>
-          <p>Each PDF page processed counts as one credit.</p>
+          <p>Each PDF page in your document counts as one page. A 6-page PDF = $6 at export.</p>
         </details>
         <details>
-          <summary>Do credits expire?</summary>
-          <p>No. Credits never expire. Buy when you need them, use them when you're ready.</p>
+          <summary>Do I need an account?</summary>
+          <p>No. Enter your email at checkout — that's it. Your download link is emailed to you and works permanently.</p>
         </details>
         <details>
           <summary>What GIS formats can I export?</summary>
@@ -695,7 +641,7 @@
   <footer>
     <div class="footer-inner">
       <div>
-        <div class="brand">Draw<span class="bridge">Bridge</span></div>
+        <div class="brand">Draw<span>Bridge</span></div>
         <div class="footer-note">© 2026 DrawBridge LLC</div>
       </div>
       <div class="footer-links">
